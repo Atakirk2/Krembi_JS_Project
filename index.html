@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>JS</title>
+</head>
+<body>
+    <div class="navigation">
+    <div class="buttons">
+    <button id="fetchButton" class="product-button"><a>Fetch Data</a></button>
+    <button id="myBtn" class="product-button">Add Product</button>
+    <button id="favoritesBtn" class="product-button">Favorites</button>
+    </div>
+    <input id="searchbar" type="search" placeholder="Search">
+    
+    </div>
+    <!--MODALS START-->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+                <span id="addProductSpan" class="close">&times;</span>
+                <div class="product-modal-body">
+                <label for="title">Title</label>
+                <input class="add-product-input" type="text" id="title" name="title"><br>
+        
+                <label for="category">Category</label>
+                <input class="add-product-input" type="text" id="category" name="category"><br>
+        
+                <label for="category">Price</label>
+                <input class="add-product-input" type="text" id="price" name="price"><br>
+        
+                <label for="description">Description</label>
+                <textarea class="add-product-input" id="description"></textarea><br>
+        
+                <label for="url">Image URL</label>
+                <input class="add-product-input" type="text" id="url" name="url"><br>
+          
+                
+                <button id="product-add-button" class="product-button">Add</button>
+            </div>
+          </div>        
+    </div>
+    
+    <div id="favoritesModel" class="modal">
+        <div class="modal-content-favorites">
+            <span id="favoritesSpan" class="close">&times;</span>
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Image</th>
+                    </tr>
+                </thead>
+                <tbody id="favorites-table-body">
+                    
+                </tbody>
+            </table>
+          </div>        
+    </div>
+    <!--MODALS END-->
+    <div class="container">
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Favorite</th>
+                </tr>
+            </thead>
+            <tbody id="products">
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+<script src="script.js"></script>
+<script src="modal.js"></script>
