@@ -9,8 +9,9 @@ const searchbar = document.getElementById("searchbar");
 let productCounter = localStorage.length;
 
 //ADDING FAVORITE
-function addFavorite(e) {
+function addFavorite2(e) {
   let imgID;
+  console.log(e.tagName);
   if (e.target.tagName == "IMG") {
     if (e.target.src.split("assets/")[1] == "star.png") {
       e.target.src = "assets/filled-star.png";
@@ -18,6 +19,25 @@ function addFavorite(e) {
       e.target.src = "assets/star.png";
     }
     imgID = e.target.id.split("g")[1];
+    console.log(imgID);
+  }
+  products.map((product) => {
+    if (product.id == imgID) {
+      product.isFavorite = !product.isFavorite;
+    }
+  });
+}
+//Favorite V2
+function addFavorite(e) {
+  let imgID;
+  console.log(e.tagName);
+  if (e.tagName == "IMG") {
+    if (e.src.split("assets/")[1] == "star.png") {
+      e.src = "assets/filled-star.png";
+    } else {
+      e.src = "assets/star.png";
+    }
+    imgID = e.id.split("g")[1];
     console.log(imgID);
   }
   products.map((product) => {
@@ -45,9 +65,9 @@ async function getProducts(url) {
 
     console.log(products);
     load(products);
-    let tr = document.getElementsByTagName("tr");
+    /* let tr = document.getElementsByTagName("tr");
     let trNew = [...tr];
-    trNew.forEach((e) => e.addEventListener("click", (e) => addFavorite(e)));
+    trNew.forEach((e) => e.addEventListener("click", (e) => addFavorite(e))); */
   } catch (e) {
     console.log(e);
   }
@@ -66,7 +86,7 @@ function load(products) {
                     <td data-label="Image"><img class='product-image' src='${
                       product.image
                     }'></td>
-                    <td data-label="Image"><img id='img${
+                    <td data-label="Image"><img onclick='addFavorite(this)' id='img${
                       product.id
                     }' src='./assets/${
         product.isFavorite ? "filled-star.png" : "star.png"
@@ -155,6 +175,7 @@ searchbar.addEventListener("input", () => {
   const tempArr = products.filter((product) => {
     return product.title.toLowerCase().includes(searchbarValue.toLowerCase());
   });
+  console.log(tempArr);
   load(tempArr);
 });
 window.addEventListener("load", getProducts(productUrl));

@@ -36,7 +36,7 @@ table {
     text-transform: uppercase;
   }
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 800px) {
     table {
       border: 0;
     }
@@ -88,6 +88,7 @@ table {
   }
   .product-image{
     height: 20vh;
+    max-width: 150px;
     object-fit: cover;
   }
   .product-button{
