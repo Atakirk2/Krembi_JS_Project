@@ -34,6 +34,7 @@ async function getProducts(url) {
     for (let i = 0; i < localStorage.length; i++) {
       tempArr.push(JSON.parse(window.localStorage.getItem(`product${i}`)));
     }
+    console.log(tempArr);
     const response = await fetch(url);
     const data = await response.json();
     products = [...data, ...tempArr];
@@ -135,7 +136,7 @@ function addProduct() {
   );
   productCounter++;
   products.push(product);
-  load(products);
+  getProducts(productUrl);
   modal.style.display = "none";
 }
 //Event Listeners
@@ -156,3 +157,4 @@ searchbar.addEventListener("input", () => {
   });
   load(tempArr);
 });
+window.addEventListener("load", getProducts(productUrl));
