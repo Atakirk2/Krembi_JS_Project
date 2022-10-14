@@ -65,9 +65,6 @@ async function getProducts(url) {
 
     console.log(products);
     load(products);
-    /* let tr = document.getElementsByTagName("tr");
-    let trNew = [...tr];
-    trNew.forEach((e) => e.addEventListener("click", (e) => addFavorite(e))); */
   } catch (e) {
     console.log(e);
   }
@@ -156,7 +153,7 @@ function addProduct() {
   );
   productCounter++;
   products.push(product);
-  getProducts(productUrl);
+  load(products);
   modal.style.display = "none";
 }
 //Event Listeners
